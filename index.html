@@ -2,58 +2,208 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>teaching</title>
 	<link rel="stylesheet" href="css/slidebars.css">
 	<link rel="stylesheet" href="example-styles.css">
+
+	<link rel="stylesheet" href="css/menuStyles.css">
+
+
+    <link id="scrollUpTheme" rel="stylesheet" href="css/themes/tab.css">
+    <link rel="stylesheet" href="css/labs.css">
+
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<title>teaching</title>
+	
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+	<script src="js/menuScript.js"></script>
+
+    <script src="js/jquery.scrollUp.min.js"></script>
+        <script>
+
+            // Parse URL Queries Method
+            (function ($) {
+                $.getQuery = function (query) {
+                    query = query.replace(/[\[]/, '\\\[').replace(/[\]]/, '\\\]');
+                    var expr = '[\\?&]' + query + '=([^&#]*)';
+                    var regex = new RegExp(expr);
+                    var results = regex.exec(window.location.href);
+                    if (results !== null) {
+                        return results[1];
+                    } else {
+                        return false;
+                    }
+                };
+            })(jQuery);
+
+            $(function () {
+
+                // Change URIs
+                $('.pill-switch').click(function () {
+                    window.location = '?theme=pill';
+                });
+
+                $('.tab-switch').click(function () {
+                    window.location = '?theme=tab';
+                });
+
+                $('.image-switch').click(function () {
+                    window.location = '?theme=image';
+                });
+
+                $('.link-switch').click(function () {
+                    window.location = '?theme=link';
+                });
+
+                // Set theme based on URI
+                if ($.getQuery('theme') === 'pill') {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'fade',
+                            activeOverlay: '#00FFFF'
+                        });
+                    });
+                    $('.pill-switch').addClass('active');
+                    $('#scrollUpTheme').attr('href', 'css/themes/pill.css?1.1');
+                } else if ($.getQuery('theme') === 'link') {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'fade',
+                            activeOverlay: '#00FFFF'
+                        });
+                    });
+                    $('#scrollUpTheme').attr('href', 'css/themes/link.css?1.1');
+                    $('.link-switch').addClass('active');
+                } else if ($.getQuery('theme') === 'image') {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'fade',
+                            activeOverlay: '#00FFFF',
+                            scrollImg: {
+                                active: true,
+                                type: 'background',
+                                src: 'img/top.png'
+                            }
+                        });
+                    });
+                    $('#scrollUpTheme').attr('href', 'css/themes/image.css?1.1');
+                    $('.image-switch').addClass('active');
+                } else {
+                    $(function () {
+                        $.scrollUp({
+                            animation: 'slide',
+                            activeOverlay: '#00FFFF'
+                        });
+                    });
+                    $('#scrollUpTheme').attr('href', 'css/themes/tab.css?1.1');
+                    $('.tab-switch').addClass('active');
+                }
+
+                // Toggle overlay
+                $('#toggleActive').click(function () {
+                    $('#scrollUp-active').toggle();
+
+                    var text = $(this).text() == 'Hide activeOverlay' ? 'Show activeOverlay' : 'Hide activeOverlay';
+                    $(this)
+                        .text(text)
+                        .toggleClass('active');
+                });
+            });
+
+        </script>
+
 </head>
 
 <body>
+	<div class="header sb-slide">
+		<p>< МЕНЮ ></p>
+	</div>
+	
+	<div class="sb-open-left sb-slide">
+		<div class="leftNav">
+			<div class="menPart"></div>
+			<div class="menPart"></div>
+			<div class="menPart"></div>
+		</div>
+	</div>
 
-	<div class="sb-open-left sb-slide">Menu</div>
+	<div class="sb-open-right sb-slide">
+		<div class="rightNav">
+			<div class="menPart"></div>
+			<div class="menPart"></div>
+			<div class="menPart"></div>
+		</div>
+	</div>
 	
 	<div class="main" id="sb-site">
+		<div class="mainBody">
+			
+			<div class="navHead">
+				<ul class="nav">
+					<li class="navList" id="about"><a href="">Обо мне</a></li>
+					<li class="navList" id="contacts"><a href="">Контакты</a></li>
+					<li class="navList" id="forStuds"><a href="">Обучающимся</a></li>
+					<li class="navList" id="questions"><a href="">Вопросы</a></li>
+					<li class="navList" id="lessons"><a href="">Занятия</a></li>
+					<li class="navList" id="gallery"><a href="">Галлерея</a></li>
+					<li class="navList" id="feedback"><a href="">Отзывы</a></li>
+				</ul>
+
+			</div>
+			
+			
+			<p><b>many symbols symbols  symbols  symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols ols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols  ss symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols  about me and my life</b></p>
+		</div>
+	</div>
 
 	
-	<div class="mainBody">
-		
-		<div class="navHead">
-			<ul class="nav">
-				<li class="navList" id="about"><a href="">Обо мне</a></li>
-				<li class="navList" id="contacts"><a href="">Контакты</a></li>
-				<li class="navList" id="forStuds"><a href="">Обучающимся</a></li>
-				<li class="navList" id="questions"><a href="">Вопросы</a></li>
-				<li class="navList" id="lessons"><a href="">Занятия</a></li>
-				<li class="navList" id="gallery"><a href="">Галлерея</a></li>
-				<li class="navList" id="feedback"><a href="">Отзывы</a></li>
-			</ul>
-
-		</div>
-		
-		
-		<p><b>many symbols symbols  symbols  symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols ols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols  ss symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols symbols  about me and my life</b></p>
-	</div>
-
-	</div>
-	<div class="header sb-slide">
-		<p>Доборо Пожаловать, %User_name%!</p>
-	</div>
-	<div class="footer sb-slide">
+	<div class="footer">
 		<p clas="copy"> &copy; Чепурко Алексей </p>
 	</div>
 
-
 <div class="sb-slidebar sb-left">
-		<p>Привет !</p>
-		<ul>
-			<li class="navList">Задания</li>
-			<li class="navList">Расписание</li>
-			<li class="navList">Контакты</li>
-		</ul>
+<!-- 		<div class="sb-info">Навигация по разделам</div>
+		<ul class="List">
+			<li class="sideList"> <a href="">Задания</a></li>
+			<li class="sideList"> <a href="">Расписание</a></li>
+			<li class="sideList"> <a href="">Контакты</a></li>
+		</ul> -->
+
+		<div id='cssmenu'>
+			<ul>
+			   <li><a href='index.html'><span>Главная</span></a></li>
+			   <li class='active has-sub'><a href='#'><span>Предметы</span></a>
+			      <ul>
+			         <li class='has-sub'><a href='#'><span>Математика</span></a>
+			            <ul>
+			               <li><a href='#'><span>Материалы</span></a></li>
+			               <li class='last'><a href='#'><span>Задания</span></a></li>
+			            </ul>
+			         </li>
+			         <li class='has-sub'><a href='#'><span>Информатика и ИКТ</span></a>
+			            <ul>
+			               <li><a href='#'><span>Материалы</span></a></li>
+			               <li class='last'><a href='#'><span>Задания</span></a></li>
+			            </ul>
+			         </li>
+			      </ul>
+			   </li>
+			   <li class='active has-sub'><a href='#'><span>Обо мне</span></a>
+			    <ul>
+			         <li ><a href='#'><span>Мини-биография</span></a></li>
+			         <li ><a href='#'><span>Мнения учеников (отзывы)</span></a>
+			         </li>
+			      </ul>
+			   </li>
+			   <li><a href='#'><span>обратная связь</span></a></li>
+			   <li class='last'><a href='#'><span>контакты</span></a></li>
+			</ul>
+		</div>
 			<!-- Your left Slidebar content. -->
 </div>
+	<div class="sb-slidebar sb-right">
+		hello
+	</div>
 
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/slidebars.js"></script>
     <script>
       (function($) {
@@ -62,5 +212,8 @@
         });
       }) (jQuery);
     </script>
+
+
+});
 </body>
 </html>
